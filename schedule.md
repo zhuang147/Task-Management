@@ -28,3 +28,8 @@ gantt
     系統整合與除錯              :a11, 2025-12-09, 2025-12-15
     文件撰寫與簡報製作          :a12, 2025-12-16, 2025-12-21
 ```
+
+<img width="1685" height="1002" alt="專題甘特圖" src="https://github.com/user-attachments/assets/f257b8b4-9568-44c3-8f35-b7657305ac4a" />
+
+
+
