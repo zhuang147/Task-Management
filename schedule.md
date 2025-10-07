@@ -30,5 +30,6 @@ axisFormat %m/%d
 
 <img width="1685" height="1002" alt="專題甘特圖" src="https://github.com/user-attachments/assets/f257b8b4-9568-44c3-8f35-b7657305ac4a" />
 
+<img width="1685" height="275" alt="PERTCPM圖" src="https://github.com/user-attachments/assets/3c161520-7a8d-4bc6-a9e9-ba47f98b84e3" />
 
 
