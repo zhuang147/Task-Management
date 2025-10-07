@@ -31,5 +31,8 @@ gantt
 <img width="1685" height="1002" alt="專題甘特圖" src="https://github.com/user-attachments/assets/f257b8b4-9568-44c3-8f35-b7657305ac4a" />
 
 
+<img width="1647" height="2480" alt="專案PERTCPM圖" src="https://github.com/user-attachments/assets/421f63fe-49d8-4006-b807-2c3601c77bf9" />
+
+
 
 
