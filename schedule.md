@@ -3,8 +3,8 @@
 ```mermaid
 gantt
    title 專案進度甘特圖（10/1～12/21）
- dateFormat YYYY-MM-DD
-axisFormat %m/%d
+   dateFormat YYYY-MM-DD
+   axisFormat %m/%d
     section 規劃階段
     專案啟動與需求規劃          :done, a1, 2025-10-01, 2025-10-06
     資料庫與系統設計            :a2, after a1, 2025-10-07, 2025-10-13
