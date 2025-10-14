@@ -84,7 +84,6 @@ graph TD
     B5 --> B51[5.1 小組與帳號管理]
     B5 --> B52[5.2 系統安全與備份]
     B5 --> B53[5.3 日誌與錯誤追蹤]
-
     %% ---- 節點配色 ----
     style A fill:#d7b6f6,stroke:#a678d3,stroke-width:2px,color:#000,font-weight:bold
     style B1 fill:#fff3c4,stroke:#c2a83e,stroke-width:1px
@@ -113,10 +112,9 @@ graph TD
     style B52 fill:#ffffff,stroke:#bcbcbc
     style B53 fill:#ffffff,stroke:#bcbcbc
 ```
-
 ---
 ### 四、使用案例
-* 使用案例圖
+* **使用案例圖**
 
 ```mermaid
 %%{init: {'theme': 'default'}}%%
@@ -186,7 +184,7 @@ graph TD
 
 ```
 
-* 使用案例說明
+* **使用案例說明**
   #### 使用案例 1：建立任務(Create Task）
   | **項目** | **內容** |
   | :-- | :-- |
