@@ -56,7 +56,63 @@
 
 ---
 ### 三、功能分解圖(functional decomposition diagram, FDD)
-![FDD](FDD.png)
+```mermaid
+graph TD
+    A[小組任務管理系統]
+
+    A --> B1[1. 使用者管理]
+    B1 --> B11[1.1 使用者註冊]
+    B1 --> B12[1.2 使用者登入]
+    B1 --> B13[1.3 權限控管]
+
+    A --> B2[2. 任務管理]
+    B2 --> B21[2.1 任務建立]
+    B2 --> B22[2.2 任務分配]
+    B2 --> B23[2.3 任務進度更新]
+    B2 --> B24[2.4 任務查詢與排序]
+
+    A --> B3[3. 小組進度追蹤]
+    B3 --> B31[3.1 進度儀表板]
+    B3 --> B32[3.2 任務統計報表]
+    B3 --> B33[3.3 任務提醒通知]
+
+    A --> B4[4. 通訊與協作功能]
+    B4 --> B41[4.1 任務留言板]
+    B4 --> B42[4.2 系統公告]
+
+    A --> B5[5. 系統管理與維護]
+    B5 --> B51[5.1 小組與帳號管理]
+    B5 --> B52[5.2 系統安全與備份]
+    B5 --> B53[5.3 日誌與錯誤追蹤]
+
+    %% ---- 節點配色 ----
+    style A fill:#d7b6f6,stroke:#a678d3,stroke-width:2px,color:#000,font-weight:bold
+    style B1 fill:#fff3c4,stroke:#c2a83e,stroke-width:1px
+    style B2 fill:#fff3c4,stroke:#c2a83e,stroke-width:1px
+    style B3 fill:#fff3c4,stroke:#c2a83e,stroke-width:1px
+    style B4 fill:#fff3c4,stroke:#c2a83e,stroke-width:1px
+    style B5 fill:#fff3c4,stroke:#c2a83e,stroke-width:1px
+
+    style B11 fill:#ffffff,stroke:#bcbcbc
+    style B12 fill:#ffffff,stroke:#bcbcbc
+    style B13 fill:#ffffff,stroke:#bcbcbc
+
+    style B21 fill:#ffffff,stroke:#bcbcbc
+    style B22 fill:#ffffff,stroke:#bcbcbc
+    style B23 fill:#ffffff,stroke:#bcbcbc
+    style B24 fill:#ffffff,stroke:#bcbcbc
+
+    style B31 fill:#ffffff,stroke:#bcbcbc
+    style B32 fill:#ffffff,stroke:#bcbcbc
+    style B33 fill:#ffffff,stroke:#bcbcbc
+
+    style B41 fill:#ffffff,stroke:#bcbcbc
+    style B42 fill:#ffffff,stroke:#bcbcbc
+
+    style B51 fill:#ffffff,stroke:#bcbcbc
+    style B52 fill:#ffffff,stroke:#bcbcbc
+    style B53 fill:#ffffff,stroke:#bcbcbc
+```
 
 ---
 ### 四、使用案例
