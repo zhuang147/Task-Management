@@ -54,3 +54,6 @@
 * 系統應提供錯誤日誌功能以便除錯與維護
 * 系統應支援熱更新，不須停機即可部署小型修正
 
+---
+### 三、功能分解圖(functional decomposition diagram, FDD)
+![FDD](FDD.png)
