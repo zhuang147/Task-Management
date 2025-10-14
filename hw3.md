@@ -62,6 +62,74 @@
 ### 四、使用案例
 * 使用案例圖
 
+```mermaid
+%%{init: {'theme': 'default'}}%%
+graph TD
+
+    %% 角色
+    A([ 組員]):::actor
+    B([ 組長/老師]):::actor
+    S[(任務管理系統)]:::system
+
+    %% 任務管理
+    subgraph 任務管理
+        UC1(建立任務)
+        UC2(編輯任務)
+        UC3(刪除任務)
+        UC4(指派任務)
+    end
+
+    %% 進度追蹤
+    subgraph 進度追蹤
+        UC5(查看任務清單)
+        UC6(更新任務狀態)
+    end
+
+    %% 通知提醒
+    subgraph 通知提醒
+        UC7(系統自動通知)
+    end
+
+    %% 溝通互動
+    subgraph 溝通互動
+        UC8(留言交流)
+        UC9(檢視留言紀錄)
+    end
+
+    %% 視覺化報告
+    subgraph 視覺化
+        UC10(產出進度報告)
+    end
+
+    %% 角色關聯
+    A --> UC1
+    A --> UC2
+    A --> UC3
+    A --> UC5
+    A --> UC6
+    A --> UC8
+    A --> UC9
+
+    B --> UC4
+    B --> UC5
+    B --> UC10
+
+    %% 系統通知
+    S --> UC7
+    UC7 -.通知.-> A
+    UC7 -.通知.-> B
+
+    %% 關係 (extend)
+    UC1 -.觸發通知.-> UC7
+    UC4 -.觸發通知.-> UC7
+    UC6 -.觸發通知.-> UC7
+
+    %% 樣式設計
+    classDef actor fill:#c8e6c9,stroke:#2e7d32,stroke-width:1px,color:#000,font-weight:bold;
+    classDef system fill:#bbdefb,stroke:#1565c0,stroke-width:1px,color:#000,font-weight:bold;
+
+```
+
 * 使用案例說明
   #### 使用案例 1：建立任務(Create Task）
   | **項目** | **內容** |
