@@ -17,6 +17,3 @@ flowchart TD
 
     %% 任務資料流
     C -->|回傳任務清單| B
-```
----
-## DFD Level 0
