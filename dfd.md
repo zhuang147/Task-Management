@@ -1,7 +1,5 @@
 ## 系統環境圖 (DFD)
-
-
-
+### 一、System Context Diagram
 ```mermaid
 flowchart TD
     %% 系統
@@ -19,3 +17,20 @@ flowchart TD
     SYS -->|同步資料| DB
     SYS -->|發送郵件| E
     E -->|回覆訊息| SYS
+```
+```mermaid
+flowchart LR
+    %% === 外部實體 ===
+    A[組員 / 使用者] -->|登入資訊、任務更新| B((任務管理系統))
+    B -->|回傳登入結果、任務進度| A
+
+    C[組長 / 管理者] -->|建立任務、分配人員| B
+    B -->|任務完成狀態、成員報告| C
+
+    D[(資料庫)] <-->|任務資料、帳號資訊| B
+
+    E[通知系統（Email / LINE Bot）] <-->|通知內容| B
+```
+
+---
+### 二、DFD Level 0
