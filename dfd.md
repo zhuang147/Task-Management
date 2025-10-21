@@ -1,28 +1,19 @@
-```Mermaid
-flowchart LR
-  User["使用者\n(User)"]
-  TeamLead["組長\n(Team Lead)"]
-  Admin["管理員\n(Admin)"]
-  Notif["通知服務\n(Notification Service)"]
-  CalAPI["第三方日曆\n(Calendar API)"]
+# 任務管理系統 DFD
 
-  subgraph System[任務管理系統\n(Task Management System)]
-    direction TB
-    SYS[(任務管理系統)]
-  end
+```mermaid
+flowchart TD
+    %% 外部實體
+    A[使用者] -->|新增任務| B[任務管理模組]
+    A -->|查詢任務| B
+    A -->|更新任務| B
+    A -->|刪除任務| B
 
-  User -->|建立/更新任務、登入| SYS
-  SYS -->|任務列表、狀態回饋| User
+    %% 系統處理
+    B -->|儲存/讀取任務資料| C[(任務資料庫)]
+    B -->|推播通知| D[通知模組]
+    
+    %% 通知回饋給使用者
+    D -->|任務提醒| A
 
-  TeamLead -->|分派任務、優先順序| SYS
-  SYS -->|分派通知、團隊進度| TeamLead
-
-  Admin -->|帳號管理、設定| SYS
-  SYS -->|系統報表、稽核資料| Admin
-
-  SYS -->|提醒請求 (到期/分派)| Notif
-  Notif -->|傳送回報| SYS
-
-  SYS -->|同步事件 push| CalAPI
-  CalAPI -->|事件回傳| SYS
-```
+    %% 任務資料流
+    C -->|回傳任務清單| B
