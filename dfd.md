@@ -1,4 +1,4 @@
-
+```Mermaid
 flowchart LR
   User["使用者\n(User)"]
   TeamLead["組長\n(Team Lead)"]
@@ -25,4 +25,4 @@ flowchart LR
 
   SYS -->|同步事件 push| CalAPI
   CalAPI -->|事件回傳| SYS
-
+```
