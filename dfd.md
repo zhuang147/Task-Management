@@ -31,6 +31,7 @@ flowchart LR
 
     E[通知系統（Email / LINE Bot）] <-->|通知內容| B
 ```
+![系統環境圖](系統環境圖.png)
 
 ---
 ### 二、DFD Level 0
