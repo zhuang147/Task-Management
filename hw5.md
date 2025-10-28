@@ -45,7 +45,7 @@ sequenceDiagram
 ## 使用案例2：更新任務進度 UML循序圖
 ```mermaid
 sequenceDiagram
-    title 使用案例 2：更新任務進度（Update Task Progress）
+
 
     participant 使用者 as 任務負責人（Assignee）
     participant 系統 as 任務管理系統
@@ -155,12 +155,11 @@ direction LR
     儲存任務: 系統儲存修改並更新任務資料
     儲存任務 --> 同步更新
     同步更新: 系統即時同步顯示於所有成員畫面
-    同步更新 --> [*]
 
     顯示錯誤: 顯示「無法修改此任務」
-    顯示錯誤 --> [*]
-```
 
+
+```
 ## 使用案例3：留言與提醒 UML活動圖
 ```mermaid
 flowchart LR
