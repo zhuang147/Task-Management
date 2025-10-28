@@ -40,7 +40,6 @@ sequenceDiagram
 
     Note right of System: 後置條件：新任務成功儲存並可在清單中顯示。
 ```
----
 
 ## 使用案例2：更新任務進度 UML循序圖
 ```mermaid
@@ -129,6 +128,8 @@ sequenceDiagram
     deactivate CS
 ```
 
+---
+
 ## 使用案例1：建立任務 UML活動圖
 
 ```mermaid
@@ -160,7 +161,6 @@ direction LR
 
 
 ```
-----
 
 ## 使用案例2：更新任務進度 UML活動圖
 ```mermaid
