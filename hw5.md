@@ -1,3 +1,6 @@
+## 🗂 任務管理系統 UML 類別圖
+
+```mermaid
 classDiagram
     %% === 使用者 ===
     class User {
@@ -53,4 +56,5 @@ classDiagram
     Task "1" --> "0..*" Comment : has
     Category "1" --> "0..*" Task : groups
     Task "*" --> "*" Tag : labeled with
+
 
