@@ -18,7 +18,7 @@ sequenceDiagram
     else 有欄位未填寫
         系統->>使用者: 提示「請完整填寫資料」
     end
-
+-------
 
 
 ```mermaid
