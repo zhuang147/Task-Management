@@ -147,6 +147,11 @@ sequenceDiagram
     F -- 欄位不完整 --> J["系統: 提示「請完整填寫資料」"]
     J --> D
 
+    %% 設定開始與結束黑點顏色
+    style start fill:#000000,stroke:#000000,color:#ffffff
+    style finish fill:#000000,stroke:#000000,color:#ffffff
+
+
 ```
 ----
 
