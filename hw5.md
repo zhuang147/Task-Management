@@ -59,21 +59,21 @@ sequenceDiagram
     %% --- 主要流程 ---
     U ->> UI: 輸入留言內容
     U ->> UI: 按下「發佈」
-    UI ->> C: sendComment(留言內容)
-    C ->> CS: validateAndSave(comment)
+    UI ->> C: 發送留言
+    C ->> CS: 驗證並保存
     CS ->> CS: 檢查留言是否為空
 
     alt 留言內容為空
         CS -->> C: 錯誤訊息「留言不得為空」
         C -->> UI: 顯示錯誤提示
     else 留言內容有效
-        CS ->> DB: save(comment)
+        CS ->> DB: 儲存留言
         DB -->> CS: 儲存成功
-        CS ->> NS: notifyRelatedUsers(taskID, comment)
-        NS ->> DB: save(notification)
+        CS ->> NS: 通知相關用戶(taskID, comment)
+        NS ->> DB: 儲存通知
         NS ->> 相關成員: 發送提醒通知
         NS -->> CS: 通知成功
-        CS -->> C: return success
+        CS -->> C: 回傳成功
         C -->> UI: 更新留言區顯示新留言
     end
 ```
