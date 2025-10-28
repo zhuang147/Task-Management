@@ -1,8 +1,7 @@
 ## UML類別圖
 ![UML1](UML1.png)
 
-## 📝 使用案例1：建立任務（Create Task）UML循序圖
-
+## 使用案例1：建立任務 UML循序圖
 ```mermaid
 sequenceDiagram
     participant 使用者 as 小組成員(User)
@@ -19,9 +18,8 @@ sequenceDiagram
         系統->>使用者: 提示「請完整填寫資料」
     end
 ```
--------
 
-
+## 使用案例2：更新任務進度 UML循序圖
 ```mermaid
 sequenceDiagram
     title 使用案例 2：更新任務進度（Update Task Progress）
@@ -48,4 +46,34 @@ sequenceDiagram
     note over 系統,任務資料庫: 後置條件：任務狀態已更新並同步顯示
 ```
 
+## 使用案例3：留言與提醒 UML循序圖
+```mermaid
+sequenceDiagram
+    participant U as 使用者（User）
+    participant UI as 任務頁面（TaskDetailUI）
+    participant C as 系統控制器（TaskController）
+    participant CS as 留言服務（CommentService）
+    participant NS as 通知服務（NotificationService）
+    participant DB as 資料庫（Database）
+
+    %% --- 主要流程 ---
+    U ->> UI: 輸入留言內容
+    U ->> UI: 按下「發佈」
+    UI ->> C: sendComment(留言內容)
+    C ->> CS: validateAndSave(comment)
+    CS ->> CS: 檢查留言是否為空
+
+    alt 留言內容為空
+        CS -->> C: 錯誤訊息「留言不得為空」
+        C -->> UI: 顯示錯誤提示
+    else 留言內容有效
+        CS ->> DB: save(comment)
+        DB -->> CS: 儲存成功
+        CS ->> NS: notifyRelatedUsers(taskID, comment)
+        NS ->> DB: save(notification)
+        NS ->> 相關成員: 發送提醒通知
+        NS -->> CS: 通知成功
+        CS -->> C: return success
+        C -->> UI: 更新留言區顯示新留言
+    end
 ```
