@@ -6,7 +6,7 @@
 
 ```mermaid
 sequenceDiagram
-    title: 使用案例 1：建立任務 (Create Task) - 含焦點 (修正版)
+  
 
     participant User as 小組成員 (User)
     participant System as 任務管理系統
