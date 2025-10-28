@@ -96,19 +96,12 @@ sequenceDiagram
     participant DB as 資料庫
 
     %% --- 主要流程 ---
-    activate U
+    
     U ->> UI: 輸入留言內容
     U ->> UI: 按下「發佈」
-    deactivate U
-
-    activate UI
     UI ->> C: 發送留言
-    deactivate UI
-
-    activate C
     C ->> CS: 驗證並保存
-    deactivate C
-
+    
     activate CS
     CS ->> CS: 檢查留言是否為空
 
