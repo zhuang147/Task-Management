@@ -1,75 +1,56 @@
-┌────────────────────────┐
-│        User            │
-├────────────────────────┤
-│ - userID: int          │
-│ - username: string     │
-│ - email: string        │
-│ - password: string     │
-├────────────────────────┤
-│ + register()           │
-│ + login()              │
-│ + updateProfile()      │
-└──────────┬─────────────┘
-           │ 1..*
-           │
-           ▼
-┌────────────────────────┐
-│        Task            │
-├────────────────────────┤
-│ - taskID: int          │
-│ - title: string        │
-│ - description: string  │
-│ - dueDate: date        │
-│ - status: string       │
-├────────────────────────┤
-│ + createTask()         │
-│ + editTask()           │
-│ + deleteTask()         │
-│ + markAsComplete()     │
-└──────────┬─────────────┘
-           │ 0..*
-           │
-           ▼
-┌────────────────────────┐
-│       Comment          │
-├────────────────────────┤
-│ - commentID: int       │
-│ - content: string      │
-│ - createdAt: datetime  │
-├────────────────────────┤
-│ + addComment()         │
-│ + deleteComment()      │
-└────────────────────────┘
+classDiagram
+    %% === 使用者 ===
+    class User {
+        +int userID
+        +string username
+        +string email
+        +string password
+        +register()
+        +login()
+        +updateProfile()
+    }
 
-┌────────────────────────┐
-│       Category         │
-├────────────────────────┤
-│ - categoryID: int      │
-│ - name: string         │
-├────────────────────────┤
-│ + addCategory()        │
-│ + deleteCategory()     │
-└──────────┬─────────────┘
-           │ 1..*
-           │
-           ▼
-┌────────────────────────┐
-│        Task            │
-└────────────────────────┘
+    %% === 任務 ===
+    class Task {
+        +int taskID
+        +string title
+        +string description
+        +date dueDate
+        +string status
+        +createTask()
+        +editTask()
+        +deleteTask()
+        +markAsComplete()
+    }
 
-┌────────────────────────┐
-│        Tag             │
-├────────────────────────┤
-│ - tagID: int           │
-│ - name: string         │
-├────────────────────────┤
-│ + addTag()             │
-│ + removeTag()          │
-└──────────┬─────────────┘
-           │ *..*
-           │
-           ▼
-┌────────────────────────┐
-│        Task            │
-└────────────────────────┘
+    %% === 留言 ===
+    class Comment {
+        +int commentID
+        +string content
+        +datetime createdAt
+        +addComment()
+        +deleteComment()
+    }
+
+    %% === 分類 ===
+    class Category {
+        +int categoryID
+        +string name
+        +addCategory()
+        +deleteCategory()
+    }
+
+    %% === 標籤 ===
+    class Tag {
+        +int tagID
+        +string name
+        +addTag()
+        +removeTag()
+    }
+
+    %% === 關係 ===
+    User "1" --> "0..*" Task : creates
+    Task "1" --> "0..*" Comment : has
+    Category "1" --> "0..*" Task : groups
+    Task "*" --> "*" Tag : labeled with
 
