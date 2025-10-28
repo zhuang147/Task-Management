@@ -1,23 +1,47 @@
 ## UML類別圖
 ![UML1](UML1.png)
 
-## <img src="黃玉狗.jpg" style="width:8%;" />使用案例1：建立任務 UML循序圖
+## <img src="黃玉狗.jpg" style="width:8%;" />
+## 使用案例1：建立任務 UML循序圖
+
+這裏展示了使用者建立新任務的流程，並包含了「焦點控制」(Activation) 來顯示系統處理工作的時間。
+
 ```mermaid
 sequenceDiagram
-    participant 使用者 as 小組成員(User)
-    participant 系統 as 任務管理系統(Task System)
+    title: 使用案例 1：建立任務 (Create Task) - 含焦點 (修正版)
 
-    使用者->>系統: 點選「新增任務」按鈕
-    系統->>使用者: 顯示任務輸入介面
-    使用者->>系統: 輸入任務名稱、說明、負責人與截止日期
-    使用者->>系統: 按下「儲存」
-    alt 所有必填欄位皆已填寫
-        系統->>系統: 建立新任務
-        系統->>使用者: 顯示任務清單（含新任務）
-    else 有欄位未填寫
-        系統->>使用者: 提示「請完整填寫資料」
+    participant User as 小組成員 (User)
+    participant System as 任務管理系統
+    participant DB as 任務資料表
+    participant Members as 所有成員
+
+    %% 流程 1: 顯示介面
+    User->>System: 1. 點選「新增任務」按鈕
+    activate System
+    System-->>User: 2. 系統顯示任務輸入介面
+    deactivate System
+
+    %% 流程 2: 儲存任務
+    User->>System: 3. 輸入任務資料並按下「儲存」
+    activate System
+
+    %% 替代流程 (Alternate Flow)
+    alt 資料驗證通過 (Happy Path)
+        System->>DB: 4. 儲存新任務資料
+        activate DB
+        DB-->>System: 建立成功
+        deactivate DB
+        
+        System-->>User: 5. 顯示任務於清單中
+        System->>Members: 6. (後續) 即時同步顯示新任務
+    else 欄位填寫不完整 (Alternate Path)
+        System-->>User: 顯示「請完整填寫資料」
     end
-```
+    
+    %% 在 alt 區塊結束後，才停用系統
+    deactivate System
+
+    Note right of System: 後置條件：新任務成功儲存並可在清單中顯示。
 
 ## 使用案例2：更新任務進度 UML循序圖
 ```mermaid
