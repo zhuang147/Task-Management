@@ -49,12 +49,12 @@ sequenceDiagram
 ## 使用案例3：留言與提醒 UML循序圖
 ```mermaid
 sequenceDiagram
-    participant U as 使用者（User）
-    participant UI as 任務頁面（TaskDetailUI）
-    participant C as 系統控制器（TaskController）
-    participant CS as 留言服務（CommentService）
-    participant NS as 通知服務（NotificationService）
-    participant DB as 資料庫（Database）
+    participant U as 使用者
+    participant UI as 任務頁面
+    participant C as 系統控制器
+    participant CS as 留言服務
+    participant NS as 通知服務
+    participant DB as 資料庫
 
     %% --- 主要流程 ---
     U ->> UI: 輸入留言內容
