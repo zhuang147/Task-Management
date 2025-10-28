@@ -131,11 +131,9 @@ sequenceDiagram
 
 ## 使用案例1：建立任務 UML活動圖
 
-
 ```mermaid
-stateDiagram-v2
-direction LR
-    [*] --> B(使用者: 點選「新增任務」按鈕);
+graph LR
+     [*]  --> B(使用者: 點選「新增任務」按鈕);
     B --> C(系統: 顯示任務輸入介面);
     C --> D(使用者: 輸入任務資料);
     D --> E(使用者: 按下「儲存」);
