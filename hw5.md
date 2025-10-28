@@ -57,25 +57,44 @@ sequenceDiagram
     participant DB as 資料庫
 
     %% --- 主要流程 ---
+    activate U
     U ->> UI: 輸入留言內容
     U ->> UI: 按下「發佈」
+    deactivate U
+
+    activate UI
     UI ->> C: 發送留言
+    deactivate UI
+
+    activate C
     C ->> CS: 驗證並保存
+    deactivate C
+
+    activate CS
     CS ->> CS: 檢查留言是否為空
 
     alt 留言內容為空
-        CS -->> C: 錯誤訊息「留言不得為空」
-        C -->> UI: 顯示錯誤提示
+        CS -->> UI: 錯誤訊息「留言不得為空」
     else 留言內容有效
         CS ->> DB: 儲存留言
+        activate DB
         DB -->> CS: 儲存成功
+        deactivate DB
+
         CS ->> NS: 通知相關用戶(taskID, comment)
+        activate NS
         NS ->> DB: 儲存通知
+        activate DB
+        DB -->> NS: 儲存成功
+        deactivate DB
+
         NS ->> 相關成員: 發送提醒通知
         NS -->> CS: 通知成功
-        CS -->> C: 回傳成功
-        C -->> UI: 更新留言區顯示新留言
+        deactivate NS
+
+        CS -->> UI: 更新留言區顯示新留言
     end
+    deactivate CS
 ```
 
 ## 使用案例2：更新任務進度 UML活動圖
