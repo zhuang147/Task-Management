@@ -1,7 +1,7 @@
 ## UML類別圖
 ![UML1](UML1.png)
 
-## <img src="黃玉狗.jpg" style="width:8%;" />使用案例1：建立任務 UML循序圖
+## 使用案例1：建立任務 UML循序圖
 
 ```mermaid
 sequenceDiagram
@@ -129,7 +129,7 @@ sequenceDiagram
     deactivate CS
 ```
 
-## <img src="黃玉狗.jpg" style="width:8%;" />使用案例1：建立任務 UML活動圖
+## 使用案例1：建立任務 UML活動圖
 
 
 ## 使用案例2：更新任務進度 UML活動圖
