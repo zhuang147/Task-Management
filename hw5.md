@@ -4,8 +4,6 @@
 ## <img src="黃玉狗.jpg" style="width:8%;" />
 ## 使用案例1：建立任務 UML循序圖
 
-這裏展示了使用者建立新任務的流程，並包含了「焦點控制」(Activation) 來顯示系統處理工作的時間。
-
 ```mermaid
 sequenceDiagram
     title: 使用案例 1：建立任務 (Create Task) - 含焦點 (修正版)
@@ -42,6 +40,8 @@ sequenceDiagram
     deactivate System
 
     Note right of System: 後置條件：新任務成功儲存並可在清單中顯示。
+```
+---
 
 ## 使用案例2：更新任務進度 UML循序圖
 ```mermaid
