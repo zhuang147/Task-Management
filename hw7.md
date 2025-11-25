@@ -81,4 +81,92 @@ erDiagram
 ```
 
 
+```mermaid
+erDiagram
+    %% 1. 實體定義
+    User ||--|{ Project_Member : "加入 (Joins)"
+    User ||--|{ Comment : "發佈 (Posts)"
+    User ||--o{ Task_Log : "執行更新 (Updates)"
+    User ||--o{ Notification : "接收 (Receives)"
+    
+    Project ||--|{ Project_Member : "擁有 (Has)"
+    Project ||--|{ Task : "包含 (Contains)"
+    Project ||--o{ Report : "產生 (Produces)"
+    
+    Task ||--|{ Comment : "擁有 (Has)"
+    Task ||--o{ Task_Log : "被記錄 (Is Logged)"
+    Task ||--o{ Notification : "觸發 (Triggers)"
 
+    %% 2. 實體詳細屬性
+    User {
+        int UserID PK "使用者ID"
+        string Email "電子郵件"
+        string Password "密碼"
+        string Name "姓名"
+        string Role "系統角色"
+    }
+
+    Project {
+        int ProjectID PK "專案編號"
+        string ProjectName "專案名稱"
+        date StartDate "開始日期"
+        date EndDate "結束日期"
+        string Status "專案狀態"
+    }
+
+    Task {
+        int TaskID PK "任務編號"
+        int ProjectID FK "所屬專案ID"
+        int AssigneeID FK "負責人(UserID)"
+        string Title "標題"
+        string Content "內容"
+        string Status "狀態"
+        date DueDate "截止日期"
+        int Progress "進度百分比"
+    }
+
+    Comment {
+        int CommentID PK "留言編號"
+        int TaskID FK "任務ID"
+        int UserID FK "留言者ID"
+        string Content "留言內容"
+        datetime Timestamp "發佈時間"
+    }
+
+    Notification {
+        int NotificationID PK "通知編號"
+        int UserID FK "接收者ID"
+        int TaskID FK "關聯任務ID"
+        string Message "訊息內容"
+        boolean IsRead "是否已讀"
+        datetime CreatedAt "建立時間"
+    }
+
+    %% 新增：報告實體
+    Report {
+        int ReportID PK "報告編號"
+        int ProjectID FK "所屬專案ID"
+        string ReportName "報告名稱"
+        string Content "報告內容/統計數據"
+        date GeneratedDate "產生日期"
+        string Type "報告類型(進度/結案)"
+    }
+
+    %% 3. 組合實體
+    Project_Member {
+        int ProjectID FK "專案ID"
+        int UserID FK "成員ID"
+        string Role "小組角色(組長/組員)"
+        date JoinDate "加入日期"
+    }
+
+    Task_Log {
+        int LogID PK "紀錄編號"
+        int TaskID FK "任務ID"
+        int UserID FK "操作者ID"
+        string ActionType "動作類型"
+        string PreviousStatus "原狀態"
+        string NewStatus "新狀態"
+        datetime UpdateTime "更新時間"
+    }
+```
