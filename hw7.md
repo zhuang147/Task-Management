@@ -131,3 +131,112 @@ erDiagram
         datetime UpdateTime "更新時間"
     }
 ```
+
+
+erDiagram
+    %% ==========================================
+    %% 1. 用戶 (Users)
+    %% ==========================================
+    USERS {
+        int user_id PK "使用者ID"
+        string username "使用者名稱"
+        string email "電子郵件 (Unique)"
+        string password_hash "密碼雜湊"
+        datetime created_at "註冊時間"
+    }
+
+    %% ==========================================
+    %% 2. 專案與成員 (Projects & Members)
+    %% ==========================================
+    PROJECTS {
+        int project_id PK "專案ID"
+        string name "專案名稱"
+        text description "專案描述"
+        int owner_id FK "擁有者(老師/組長)"
+        datetime created_at
+    }
+
+    PROJECT_MEMBERS {
+        int project_id FK "專案ID"
+        int user_id FK "用戶ID"
+        enum role "角色: leader/member"
+        datetime joined_at
+    }
+
+    %% ==========================================
+    %% 3. 任務 (Tasks)
+    %% ==========================================
+    TASKS {
+        int task_id PK "任務ID"
+        int project_id FK "所屬專案"
+        string title "標題"
+        text content "內容"
+        int creator_id FK "建立者"
+        int assignee_id FK "負責人"
+        enum status "狀態: pending/in_progress/completed"
+        enum priority "優先級: low/medium/high"
+        datetime deadline "截止日"
+        datetime created_at
+        datetime updated_at
+    }
+
+    %% ==========================================
+    %% 4. 紀錄與協作 (Logs, Comments, Notifications)
+    %% ==========================================
+    TASK_LOGS {
+        int log_id PK
+        int task_id FK
+        int user_id FK "操作者"
+        string action "動作類型"
+        text old_value
+        text new_value
+        datetime created_at
+    }
+
+    COMMENTS {
+        int comment_id PK
+        int task_id FK
+        int user_id FK "留言者"
+        text message "內容"
+        int parent_id FK "回覆留言ID (Self)"
+        datetime created_at
+    }
+
+    NOTIFICATIONS {
+        int notification_id PK
+        int user_id FK "接收者"
+        string type "通知類型"
+        text content "通知內容"
+        int related_task_id FK "關聯任務"
+        boolean is_read "是否已讀"
+        datetime created_at
+    }
+
+    %% ==========================================
+    %% 關聯定義 (Relationships)
+    %% ==========================================
+    
+    %% 用戶與專案
+    USERS ||--o{ PROJECTS : "owns (1:N)"
+    USERS ||--o{ PROJECT_MEMBERS : "belongs_to (1:N)"
+    PROJECTS ||--|{ PROJECT_MEMBERS : "has_members (1:N)"
+
+    %% 專案與任務
+    PROJECTS ||--o{ TASKS : "contains (1:N)"
+    
+    %% 用戶與任務 (建立與指派)
+    USERS ||--o{ TASKS : "creates/assigned_to (1:N)"
+
+    %% 任務與周邊功能
+    TASKS ||--o{ COMMENTS : "has_discussion (1:N)"
+    TASKS ||--o{ TASK_LOGS : "logs_history (1:N)"
+    TASKS ||--o{ NOTIFICATIONS : "triggers (1:N)"
+
+    %% 用戶與周邊功能
+    USERS ||--o{ COMMENTS : "writes (1:N)"
+    USERS ||--o{ TASK_LOGS : "performs_action (1:N)"
+    USERS ||--o{ NOTIFICATIONS : "receives (1:N)"
+
+    %% 自關聯 (留言回覆)
+    COMMENTS ||--o{ COMMENTS : "replies_to (1:N)"
+```
